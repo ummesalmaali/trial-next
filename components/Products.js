@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Container } from "react-bootstrap";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import Image from "next/image";
 import Button from "react-bootstrap/Button";
 
@@ -14,30 +14,35 @@ const Products = () => {
 
   console.log(items);
   return (
-    <div>
-      {items.map((item) => {
-        return (
-          <div key={item.id}>
-            <Container>
-              <Card style={{ width: "30rem" }}>
-                <Card.Img
-                  height="300"
-                  width="250"
-                  variant="top"
-                  src={item.image}
-                />
-                <Card.Body>
-                  <Card.Title>{item.title}</Card.Title>
-                  <Card.Text>{item.description}</Card.Text>
-                  <Card.Text>{item.price}</Card.Text>
-                  <Button variant="primary">Buy Now</Button>
-                </Card.Body>
-              </Card>
-            </Container>
-          </div>
-        );
-      })}
-    </div>
+    <>
+      <Container>
+        <Row>
+          {items.map((item) => {
+            const { id, name, title, description, image, price } = item;
+            return (
+              <>
+                <Col xs={6} md={4} className="items" key={id}>
+                  <Card className="m-4">
+                    <Image
+                      src={image}
+                      height="300"
+                      width="250"
+                      variant="top"
+                      alt={name}
+                    />
+                    <Card.Title>{title}</Card.Title>
+
+                    <p>{name}</p>
+                    <p>{price}</p>
+                    <Button variant="primary">Buy Now</Button>
+                  </Card>
+                </Col>
+              </>
+            );
+          })}
+        </Row>
+      </Container>
+    </>
   );
 };
 

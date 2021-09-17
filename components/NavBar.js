@@ -1,28 +1,22 @@
 import Link from "next/Link";
 import React from "react";
+import { Container, Nav, Navbar } from "react-bootstrap";
 
 const NavBar = () => {
   return (
     <>
-      <nav>
-        <ul>
-          <li>
+      <Navbar bg="light" variant="light">
+        <Container>
+          <Navbar.Brand href="#home">Shopping Cart</Navbar.Brand>
+          <Nav className="me-auto">
             <Link href="/">Home</Link>
-          </li>
-          <li>
             <Link href="/about">About</Link>
-          </li>
-          <li>
             <Link href="/contact">Contact</Link>
-          </li>
-          <li>
             <Link href="/blog">Blog</Link>
-          </li>
-          <li>
             <Link href="/product">Product</Link>
-          </li>
-        </ul>
-      </nav>
+          </Nav>
+        </Container>
+      </Navbar>
     </>
   );
 };
